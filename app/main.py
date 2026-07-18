@@ -14,7 +14,7 @@ _LIVRES = ("/login", "/saude", "/static")
 
 
 def create_app() -> FastAPI:
-    app = FastAPI(title="RS Portaria — Propostas")
+    app = FastAPI(title="RS Portaria - Propostas")
 
     conn = db.get_conn()
     db.init_db(conn)

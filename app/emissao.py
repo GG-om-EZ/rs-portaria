@@ -30,7 +30,7 @@ def _nota_metodologica(conn: sqlite3.Connection, tipo: str) -> str:
         pct_margem = int(p.pct_margem * 100)
         return (
             f"Base estimada: piso mensal por função + adicional noturno de "
-            f"{pct_noturno}% sobre horas entre 22h–06h ({plantoes} plantões/mês); "
+            f"{pct_noturno}% sobre horas entre 22h-06h ({plantoes} plantões/mês); "
             f"encargos sociais de {pct_encargos}% sobre a mão de obra; "
             f"margem administrativa de {pct_margem}%."
         )
@@ -99,7 +99,7 @@ def emitir(conn: sqlite3.Connection, pid: int, arquivo_dir: Path, gerador_pdf=No
         from app.pdf import gerar_pdf as gerador_pdf
     prop = rp.obter_proposta(conn, pid)
     if prop is not None and prop["status"] != "rascunho":
-        raise ValueError("Proposta já emitida — duplique para gerar nova versão")
+        raise ValueError("Proposta já emitida - duplique para gerar nova versão")
     itens = checklist.avaliar(conn, pid)
     if not checklist.pode_emitir(itens):
         pendentes = ", ".join(i.rotulo for i in itens if i.critico and not i.ok)

@@ -17,7 +17,7 @@ def test_criar_e_buscar_cliente(conn):
         conn,
         razao_social="Cliente Exemplo Ltda",
         cnpj="11.222.333/0001-81",
-        endereco="Avenida Exemplo, 1000 – Centro, Cidade – UF",
+        endereco="Avenida Exemplo, 1000 - Centro, Cidade - UF",
         email="contato@exemplo.com.br",
     )
     row = rc.obter_cliente(conn, cid)

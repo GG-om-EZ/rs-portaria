@@ -10,7 +10,7 @@
       <input name="plantoes_mes" inputmode="numeric" value="{{ dados.plantoes_mes or plantoes_padrao }}"></label>
   {% else %}
     <label>Comunicação <select name="comunicacao">
-      <option value="">— não se aplica —</option>
+      <option value="">- não se aplica -</option>
       {% for op in ["Rádio de comunicação (fornecido pelo PRESTADOR)", "Rádio de comunicação (fornecido pela CONTRATANTE)"] %}
       <option {{ 'selected' if dados.comunicacao == op }}>{{ op }}</option>
       {% endfor %}
@@ -25,7 +25,7 @@
 
   <h2>Funções e quantidades</h2>
   {% for f in funcoes %}
-  <label>{{ f.nome }} — base {{ f.valor_base_centavos | brl }}
+  <label>{{ f.nome }} - base {{ f.valor_base_centavos | brl }}
     <input name="qtd_{{ f.id }}" inputmode="numeric" value="{{ qtd_atuais.get(f.id, 0) }}">
   </label>
   {% endfor %}

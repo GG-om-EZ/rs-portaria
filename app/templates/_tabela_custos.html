@@ -13,19 +13,19 @@
         <button class="mini">OK</button>
       </form>
     </td>
-    <td class="num">{{ l.quantidade if l.categoria != 'derivada' else '—' }}</td>
+    <td class="num">{{ l.quantidade if l.categoria != 'derivada' else '-' }}</td>
     <td class="num">{{ (l.valor_final_centavos * l.quantidade) | brl }}</td>
     <td>
       {% if l.sobrescrito %}
       <form method="post" action="/propostas/{{ prop.id }}/linhas/{{ l.id }}/restaurar"
             hx-post="/propostas/{{ prop.id }}/linhas/{{ l.id }}/restaurar" hx-target="#tabela-custos">
-        <button class="mini" title="Voltar ao valor sugerido">↺</button>
+        <button class="mini" title="Voltar ao valor sugerido">voltar</button>
       </form>
       {% endif %}
       {% if l.categoria == 'manual' %}
       <form method="post" action="/propostas/{{ prop.id }}/linhas/{{ l.id }}/remover"
             hx-post="/propostas/{{ prop.id }}/linhas/{{ l.id }}/remover" hx-target="#tabela-custos">
-        <button class="mini" title="Remover linha">✕</button>
+        <button class="mini" title="Remover linha">x</button>
       </form>
       {% endif %}
     </td>

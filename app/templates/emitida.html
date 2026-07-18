@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block conteudo %}
-<h1>Proposta {{ prop.numero }} emitida ✓</h1>
+<h1>Proposta {{ prop.numero }} emitida</h1>
 <div class="cartao">
   <a href="/propostas/{{ prop.id }}/pdf"><button>Baixar PDF</button></a>
   {% if prop.pdf_arquivado %}

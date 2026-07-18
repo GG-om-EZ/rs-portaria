@@ -26,10 +26,10 @@ CHAVES = [
     ("empresa_endereco", "Endereço"), ("empresa_telefone", "Telefone/WhatsApp"),
     ("empresa_email", "E-mail"), ("pagamento_pix", "Chave PIX"),
     ("pagamento_banco", "Dados bancários"),
-    ("condicoes_continuo", "Condições gerais — contínuo (um parágrafo por linha)"),
-    ("condicoes_evento", "Condições gerais — evento (um parágrafo por linha)"),
-    ("obs_finais_continuo", "Observações finais — contínuo"),
-    ("obs_finais_evento", "Observações finais — evento"),
+    ("condicoes_continuo", "Condições gerais - contínuo (um parágrafo por linha)"),
+    ("condicoes_evento", "Condições gerais - evento (um parágrafo por linha)"),
+    ("obs_finais_continuo", "Observações finais - contínuo"),
+    ("obs_finais_evento", "Observações finais - evento"),
 ]
 
 _MONETARIA = lambda chave: chave.startswith("valor_")

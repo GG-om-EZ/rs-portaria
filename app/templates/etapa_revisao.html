@@ -15,6 +15,6 @@
 {% if pode %}
 <form method="post" action="/propostas/{{ prop.id }}/emitir"><button>Emitir PDF</button></form>
 {% else %}
-<p class="erro">Resolva os itens críticos (✗) para poder emitir.</p>
+<p class="erro">Resolva os itens críticos (X) para poder emitir.</p>
 {% endif %}
 {% endblock %}

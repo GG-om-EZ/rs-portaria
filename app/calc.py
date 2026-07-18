@@ -21,7 +21,7 @@ def _para_centavos(valor: Decimal) -> int:
 
 
 def minutos_noturnos(inicio: time, fim: time) -> int:
-    """Minutos do turno dentro da janela 22h–06h. Turno pode cruzar a meia-noite."""
+    """Minutos do turno dentro da janela 22h-06h. Turno pode cruzar a meia-noite."""
     ini = inicio.hour * 60 + inicio.minute
     fi = fim.hour * 60 + fim.minute
     if fi <= ini:  # cruza meia-noite

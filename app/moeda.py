@@ -5,10 +5,10 @@ import re
 def parse_brl(texto: str) -> int:
     """'1.853,00' -> 185300. Sem vírgula, assume valor inteiro em reais."""
     limpo = texto.strip().replace("R$", "").strip()
-    # Exige ao menos um dígito — rejeita entradas só de pontuação (".", ",", "..")
+    # Exige ao menos um dígito - rejeita entradas só de pontuação (".", ",", "..")
     if not re.fullmatch(r"(?=.*\d)[\d.,]+", limpo):
         raise ValueError(f"Valor monetário inválido: {texto!r}")
-    # Mais de uma vírgula é ambíguo (ex.: "1,853,00") — rejeita em vez de misparsear
+    # Mais de uma vírgula é ambíguo (ex.: "1,853,00") - rejeita em vez de misparsear
     if limpo.count(",") > 1:
         raise ValueError(f"Valor monetário inválido: {texto!r}")
     if "," in limpo:

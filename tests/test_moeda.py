@@ -29,13 +29,13 @@ def test_parse_brl_so_pontuacao():
 
 
 def test_parse_brl_multiplas_virgulas():
-    # Mais de uma vírgula é ambíguo — rejeitar em vez de misparsear
+    # Mais de uma vírgula é ambíguo - rejeitar em vez de misparsear
     with pytest.raises(ValueError):
         parse_brl("1,853,00")
 
 
 def test_parse_brl_ponto_decimal_teclado_movel():
-    # Teclado numérico móvel usa "." como separador decimal — um único ponto
+    # Teclado numérico móvel usa "." como separador decimal - um único ponto
     # seguido de 1-2 dígitos no fim, sem vírgula, deve ser tratado como decimal
     assert parse_brl("1853.00") == 185300
     assert parse_brl("1.50") == 150

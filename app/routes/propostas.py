@@ -354,7 +354,7 @@ def adicionar_linha_manual(request: Request, pid: int,
         centavos = parse_brl(valor)
     except ValueError:
         return _responder_tabela(request, conn, pid,
-                                 erro="Valor inválido — use o formato 1.234,56.")
+                                 erro="Valor inválido - use o formato 1.234,56.")
     rp.inserir_linha(conn, pid, descricao, "manual", 1, centavos)
     return _responder_tabela(request, conn, pid)
 
@@ -427,7 +427,7 @@ def emitir(request: Request, pid: int, conn=Depends(conn_dep)):
         ctx = _ctx_wizard(prop, "revisao")
         ctx.update({"itens": itens, "pode": checklist.pode_emitir(itens),
                     "total": rp.total_proposta(conn, pid),
-                    "erro": "Falha ao gerar o PDF. O rascunho foi preservado — tente novamente."})
+                    "erro": "Falha ao gerar o PDF. O rascunho foi preservado - tente novamente."})
         return templates.TemplateResponse(request, "etapa_revisao.html", ctx)
     return RedirectResponse(f"/propostas/{pid}/emitida", status_code=303)
 

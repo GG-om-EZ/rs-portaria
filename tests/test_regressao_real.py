@@ -1,7 +1,7 @@
 """Regressão com os números de dois documentos de referência (uma proposta de
 serviço contínuo e um orçamento de evento único), montados via motor real
-(inserir_linha, sincronizar_acessorios, recalcular_derivadas) + overrides — não
-por cálculo solto — para exercitar a máquina de derivadas/overrides de ponta a
+(inserir_linha, sincronizar_acessorios, recalcular_derivadas) + overrides - não
+por cálculo solto - para exercitar a máquina de derivadas/overrides de ponta a
 ponta."""
 from app import repo_catalogo as rcat
 from app import repo_clientes as rc
@@ -28,12 +28,12 @@ def test_regressao_continuo(conn):
     assert linhas["Transporte"]["quantidade"] == 3
 
     # Encargos Sociais e Margem administrativa do documento real (valores fechados,
-    # não os percentuais padrão do catálogo) — sobrescrevem o sugerido calculado
+    # não os percentuais padrão do catálogo) - sobrescrevem o sugerido calculado
     rp.sobrescrever_linha(conn, linhas["Encargos sociais"]["id"], 306600)
     rp.sobrescrever_linha(conn, linhas["Margem administrativa"]["id"], 114000)
 
     # O documento real também tinha uma linha "Operacional" (R$ 208,00), somada
-    # por fora das derivadas percentuais — exatamente o caso da categoria manual.
+    # por fora das derivadas percentuais - exatamente o caso da categoria manual.
     rp.inserir_linha(conn, pid, "Operacional", "manual", 1, 20800)
 
     assert rp.total_proposta(conn, pid) == 1200000  # R$ 12.000,00, igual ao documento de referência
@@ -58,7 +58,7 @@ def test_regressao_orcamento_evento(conn):
     assert linhas["Alimentação"]["quantidade"] == 8
     assert linhas["Transporte"]["quantidade"] == 8
 
-    # O documento real de evento não usa encargos sociais/margem percentuais —
+    # O documento real de evento não usa encargos sociais/margem percentuais -
     # zeramos ambos (valida override para 0) e o custo de EPIs/trajes/material
     # de limpeza (R$ 160,00 no total) entra como linha manual, como no documento.
     rp.sobrescrever_linha(conn, linhas["Encargos sociais"]["id"], 0)

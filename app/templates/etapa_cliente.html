@@ -12,7 +12,7 @@
   <li>
     <form method="post" action="/propostas/{{ prop.id }}/cliente">
       <input type="hidden" name="cliente_id" value="{{ c.id }}">
-      <strong>{{ c.razao_social }}</strong> — {{ c.cnpj }}
+      <strong>{{ c.razao_social }}</strong> - {{ c.cnpj }}
       <button class="mini">Usar este cliente</button>
     </form>
   </li>

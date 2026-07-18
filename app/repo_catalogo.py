@@ -101,11 +101,11 @@ _SEED_PARAMETROS = {
     "valor_transporte_evento": "4000",
     "empresa_nome": "RS PORTARIA E SERVICOS",
     "empresa_cnpj": "11.444.777/0001-61",
-    "empresa_endereco": "Rua Exemplo, 123, Bairro, Cidade – UF, CEP 00000-000",
+    "empresa_endereco": "Rua Exemplo, 123, Bairro, Cidade - UF, CEP 00000-000",
     "empresa_telefone": "(00) 00000-0000",
     "empresa_email": "contato@exemplo.com.br",
     "pagamento_pix": "chave-pix@exemplo.com.br",
-    "pagamento_banco": "Banco Exemplo — Agência 0000, Conta Corrente 00000-0",
+    "pagamento_banco": "Banco Exemplo - Agência 0000, Conta Corrente 00000-0",
     "condicoes_continuo": (
         "Os profissionais alocados exercerão suas funções devidamente uniformizados, em conformidade "
         "com o padrão de apresentação e conduta estabelecido pela CONTRATADA, durante toda a jornada.\n"

@@ -22,7 +22,7 @@ ao confirmar o resultado esperado. Divergências vão na seção final.
 - [ ] PIN errado é recusado; PIN correto entra na home.
 - [ ] Salvar o endereço nos favoritos do navegador do sócio.
 
-## 2. Fluxo contínuo completo — números de referência
+## 2. Fluxo contínuo completo - números de referência
 
 Reproduz a proposta de referência (serviço contínuo) no app, de ponta a ponta, pelo celular.
 
@@ -30,9 +30,9 @@ Reproduz a proposta de referência (serviço contínuo) no app, de ponta a ponta
 2. [ ] Cliente: criar "Cliente Exemplo Ltda", CNPJ `11.222.333/0001-81`,
        Av. Exemplo, 1000. CNPJ com dígito errado deve ser recusado.
 3. [ ] Local: endereço do serviço, duração 12 meses, data de início.
-4. [ ] Serviços: turno `18:00`–`06:00`, 15 plantões;
+4. [ ] Serviços: turno `18:00`-`06:00`, 15 plantões;
        **Portaria noturna (12x36) × 2** e **Portaria diurna (12x36) × 1**.
-5. [ ] Custos — a tabela deve mostrar Alimentação (3 × 580,00) e Transporte
+5. [ ] Custos - a tabela deve mostrar Alimentação (3 × 580,00) e Transporte
        (3 × 180,00) automáticos. Ajustar para os valores fechados do documento real:
    - Portaria noturna → sobrescrever para **1.853,00** (linha fica destacada, sugerido visível).
    - Portaria diurna → confirmar **1.600,00**.
@@ -44,11 +44,11 @@ Reproduz a proposta de referência (serviço contínuo) no app, de ponta a ponta
 8. [ ] Número no formato `RS-2026-NNNN`; PDF baixa no celular; cópia aparece em
        `03-Propostas-Enviadas/` no notebook (sincronizada via Syncthing).
 
-## 3. Fluxo evento completo — números reais do orçamento de evento
+## 3. Fluxo evento completo - números reais do orçamento de evento
 
 1. [ ] Nova proposta → **Evento único**; cliente qualquer; data e horários do evento.
 2. [ ] Serviços: **Segurança de evento (12h) × 6** e **Serviços gerais de evento (12h) × 2**.
-3. [ ] Custos — Alimentação (8 × 20,00) e Transporte (8 × 40,00) automáticos. Ajustar:
+3. [ ] Custos - Alimentação (8 × 20,00) e Transporte (8 × 40,00) automáticos. Ajustar:
    - Encargos sociais → sobrescrever para **0,00**.
    - Margem administrativa → sobrescrever para **0,00**.
    - **Adicionar linha de custo**: "EPIs, trajes e material de limpeza", valor **160,00**.
@@ -58,8 +58,8 @@ Reproduz a proposta de referência (serviço contínuo) no app, de ponta a ponta
 
 ## 4. Override, linha manual e checklist bloqueante
 
-- [ ] Sobrescrever uma linha → destaque visual + "sugerido" exibido; **↺** restaura o valor.
-- [ ] Remover uma linha manual pelo **✕** → some da tabela e do total. O ✕ só
+- [ ] Sobrescrever uma linha → destaque visual + "sugerido" exibido; o botão **voltar** restaura o valor.
+- [ ] Remover uma linha manual pelo botão **x** → some da tabela e do total. O botão **x** só
       aparece em linhas adicionadas manualmente.
 - [ ] Linha manual com descrição vazia ou valor ilegível → mensagem de erro, nada é criado.
 - [ ] Tentar emitir sem forma de pagamento → emissão bloqueada com o item do
@@ -71,7 +71,7 @@ Reproduz a proposta de referência (serviço contínuo) no app, de ponta a ponta
       (inclusive linhas manuais e overrides).
 - [ ] Alterar algo e emitir → recebe número novo; a proposta original permanece intacta.
 
-## 6. Admin — parâmetros com vigência
+## 6. Admin - parâmetros com vigência
 
 - [ ] Em Configurações, reajustar um piso com vigência futura.
 - [ ] Rascunho novo criado hoje usa o valor vigente (antigo); a proposta emitida
@@ -79,8 +79,8 @@ Reproduz a proposta de referência (serviço contínuo) no app, de ponta a ponta
 
 ## 7. Registro de divergências
 
-Anote aqui tudo que parecer errado, feio ou confuso durante a execução —
+Anote aqui tudo que parecer errado, feio ou confuso durante a execução -
 especialmente sobre o visual do PDF, que é a próxima frente de trabalho
-(estão previstas 2–3 variações de layout para escolha):
+(estão previstas 2-3 variações de layout para escolha):
 
 - _(vazio)_

@@ -77,7 +77,7 @@ def get_conn(path=None) -> sqlite3.Connection:
     p = Path(path) if path else db_path()
     p.parent.mkdir(parents=True, exist_ok=True)
     # check_same_thread=False é necessário em produção: conn_dep (generator sync)
-    # roda no threadpool do Starlette, enquanto endpoints async rodam no event loop —
+    # roda no threadpool do Starlette, enquanto endpoints async rodam no event loop -
     # a mesma conexão cruza threads dentro de um request. Seguro porque cada conexão
     # é por-request e usada sequencialmente (nunca de forma concorrente).
     conn = sqlite3.connect(p, check_same_thread=False)
@@ -88,7 +88,7 @@ def get_conn(path=None) -> sqlite3.Connection:
 
 def _migrar_categoria_manual(conn: sqlite3.Connection) -> None:
     """Bancos pré-v1.1 têm CHECK de categoria sem 'manual'. SQLite não altera
-    CHECK — rebuild da tabela preservando os dados."""
+    CHECK - rebuild da tabela preservando os dados."""
     row = conn.execute(
         "SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'linhas_custo'"
     ).fetchone()

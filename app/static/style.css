@@ -34,6 +34,6 @@ table.custos td, table.custos th { padding: 8px; border-bottom: 1px solid #eee;
 td.num, th.num { text-align: right; white-space: nowrap; }
 tr.sobrescrita td { background: #fff6e0; }
 .sugerido { font-size: .75rem; color: #777; display: block; }
-.check-ok::before { content: "✓ "; color: var(--verde); font-weight: 900; }
-.check-falha::before { content: "✗ "; color: var(--erro); font-weight: 900; }
+.check-ok::before { content: "OK "; color: var(--verde); font-weight: 900; }
+.check-falha::before { content: "X "; color: var(--erro); font-weight: 900; }
 iframe.preview { width: 100%; height: 70vh; border: 1px solid #ccc; border-radius: 8px; background: #fff; }

@@ -26,7 +26,7 @@ def _exigir_rascunho(conn: sqlite3.Connection, pid: int) -> sqlite3.Row:
     if row is None:
         raise ValueError(f"Proposta {pid} não existe")
     if row["status"] != "rascunho":
-        raise RuntimeError("Proposta emitida é imutável — duplique para alterar")
+        raise RuntimeError("Proposta emitida é imutável - duplique para alterar")
     return row
 
 

@@ -10,7 +10,7 @@
   <li>
     <a href="/propostas/{{ p.id }}/{{ 'emitida' if p.status == 'emitida' else 'cliente' }}">
       <strong>{{ p.numero or "Rascunho #" ~ p.id }}</strong>
-      {{ p.razao_social or "(sem cliente)" }} — {{ p.tipo }}
+      {{ p.razao_social or "(sem cliente)" }} - {{ p.tipo }}
       <span class="etiqueta {{ p.status }}">{{ p.status }}</span>
       {% if p.status == 'emitida' and not p.pdf_arquivado %}<span class="etiqueta alerta">cópia não arquivada</span>{% endif %}
     </a>

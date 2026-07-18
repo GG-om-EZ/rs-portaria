@@ -51,7 +51,7 @@ def test_etapa_local_botao_endereco_cliente(client):
         "endereco": "Av. Exemplo, 1000", "email": "", "telefone": "",
     })
     r = client.get(f"/propostas/{pid}/local")
-    # atributo onclick com aspas simples — tojson emite aspas duplas reais,
+    # atributo onclick com aspas simples - tojson emite aspas duplas reais,
     # que quebrariam um atributo delimitado por aspas duplas
     assert r.status_code == 200
     assert "onclick='document.getElementById" in r.text

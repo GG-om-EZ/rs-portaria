@@ -1,4 +1,4 @@
-# RS Portaria — Gerador de Propostas
+# RS Portaria - Gerador de Propostas
 
 Ferramenta web self-hosted para gerar propostas comerciais (serviço contínuo e
 evento único) em PDF, com cálculo automático, override destacado, linhas de
@@ -26,7 +26,7 @@ APP_PIN=1234 APP_SECRET=dev .venv/bin/uvicorn app.main:app --reload
 
 ## Backup
 
-Todo o estado vive em `./data/rsportaria.db` — copie esse arquivo.
+Todo o estado vive em `./data/rsportaria.db` - copie esse arquivo.
 A pasta de PDFs arquivados (`RSP_ARQUIVO_HOST`) também merece backup por
 conveniência, embora seus PDFs sejam regeneráveis a partir do banco a
 qualquer momento pelo botão "Regravar cópias não arquivadas".
@@ -53,27 +53,27 @@ O serviço é o mesmo em qualquer host: copie o repositório + `./data` +
 O projeto evolui em etapas, priorizando segurança e confiabilidade antes de
 novas funcionalidades.
 
-### Já entregue ✅
-- Geração de propostas comerciais com cálculo de encargos e margem
-- Autenticação por PIN e sessão
-- Dados sensíveis isolados fora do repositório, em banco privado
-- Exportação em PDF
+### Já entregue
+- [x] Geração de propostas comerciais com cálculo de encargos e margem
+- [x] Autenticação por PIN e sessão
+- [x] Dados sensíveis isolados fora do repositório, em banco privado
+- [x] Exportação em PDF
 
-### Curto prazo 🔨
-- Reforço da postura de segurança da aplicação e do banco de dados
-- Colocar a ferramenta em uso real no dia a dia (acesso remoto seguro)
-- Refinamento visual das propostas em PDF
+### Curto prazo
+- [ ] Reforço da postura de segurança da aplicação e do banco de dados
+- [ ] Colocar a ferramenta em uso real no dia a dia (acesso remoto seguro)
+- [ ] Refinamento visual das propostas em PDF
 
-### Médio prazo 📋
-- Hospedagem sempre disponível (fora do notebook)
-- Melhorias de usabilidade no fluxo mobile
+### Médio prazo
+- [ ] Hospedagem sempre disponível (fora do notebook)
+- [ ] Melhorias de usabilidade no fluxo mobile
 
-### Futuro 💡
-- Ideias em aberto conforme o uso amadurecer
+### Futuro
+- [ ] Ideias em aberto conforme o uso amadurecer
 
 ## Licença
 
-Distribuído sob a **GNU Affero General Public License v3.0** (AGPL-3.0) — ver
+Distribuído sob a **GNU Affero General Public License v3.0** (AGPL-3.0) - ver
 [`LICENSE`](LICENSE).
 
 Copyright (C) 2026 RS Portaria e Serviços.
