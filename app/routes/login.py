@@ -1,3 +1,4 @@
+import hmac
 import os
 
 from fastapi import APIRouter, Form, Request
@@ -16,7 +17,7 @@ def form_login(request: Request):
 
 @router.post("/login")
 def entrar(request: Request, pin: str = Form(...)):
-    if pin != os.environ["APP_PIN"]:
+    if not hmac.compare_digest(pin.encode(), os.environ["APP_PIN"].encode()):
         return templates.TemplateResponse(request, "login.html", {"erro": "PIN incorreto"})
     resp = RedirectResponse("/", status_code=303)
     resp.set_cookie("sessao", assinar_sessao(os.environ["APP_SECRET"]),
