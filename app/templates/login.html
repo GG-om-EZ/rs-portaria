@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h1>RS Portaria — Propostas</h1>
+<form method="post" action="/login" class="cartao">
+  <label>PIN de acesso
+    <input type="password" name="pin" inputmode="numeric" autocomplete="off" autofocus required>
+  </label>
+  {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+  <button type="submit">Entrar</button>
+</form>
+{% endblock %}

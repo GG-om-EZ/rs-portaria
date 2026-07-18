@@ -1,0 +1,14 @@
+services:
+  rsportaria:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${RSP_BIND:-127.0.0.1}:8420:8000"
+    environment:
+      APP_PIN: ${APP_PIN:?defina APP_PIN no .env}
+      APP_SECRET: ${APP_SECRET:?defina APP_SECRET no .env}
+      RSP_DB: /app/data/rsportaria.db
+      RSP_ARQUIVO_DIR: /arquivo
+    volumes:
+      - ./data:/app/data
+      - "${RSP_ARQUIVO_HOST:-./data/propostas-enviadas}:/arquivo"

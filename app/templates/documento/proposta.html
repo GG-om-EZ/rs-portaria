@@ -1,0 +1,91 @@
+<style>
+  @page { size: A4; margin: 2.2cm 1.8cm; }
+  body { font-family: "DejaVu Sans", sans-serif; font-size: 10.5pt; color: #222; line-height: 1.45; }
+  .logo { display: block; margin: 0 auto 8mm; height: 30mm; }
+  h1 { text-align: center; font-size: 14pt; margin: 0 0 8mm; }
+  h2 { font-size: 12pt; color: #1a1a1a; border-bottom: 2px solid #6abf4b; padding-bottom: 1mm; margin: 7mm 0 3mm; }
+  .partes p { margin: 0.6mm 0; }
+  .partes strong { color: #000; }
+  table { width: 100%; border-collapse: collapse; margin: 3mm 0; }
+  th, td { border: 1px solid #999; padding: 2mm; text-align: left; font-size: 10pt; }
+  th { background: #eef5ea; }
+  td.num, th.num { text-align: right; }
+  tr.total td { font-weight: bold; background: #f5f5f5; }
+  .nota { font-size: 8.5pt; color: #555; }
+  ul { margin: 1mm 0 0 5mm; padding: 0; }
+  li { margin-bottom: 1.5mm; }
+</style>
+
+<img class="logo" src="{{ logo_uri }}" alt="RS Portaria &amp; Serviços">
+<h1>Orçamento — {{ "Prestação de Serviço Contínuo" if s.tipo == "continuo" else "Evento Único" }}
+  {% if s.numero != "RASCUNHO" %}<br><small>{{ s.numero }}</small>{% else %}<br><small>RASCUNHO</small>{% endif %}
+</h1>
+
+<div class="partes">
+  <p><strong>{{ s.empresa.nome }}</strong></p>
+  <p><strong>CNPJ:</strong> {{ s.empresa.cnpj }}</p>
+  <p><strong>Endereço:</strong> {{ s.empresa.endereco }}</p>
+  <p><strong>Telefone/WhatsApp:</strong> {{ s.empresa.telefone }} — <strong>E-mail:</strong> {{ s.empresa.email }}</p>
+  <p style="margin-top:4mm"><strong>Contratante:</strong> {{ s.cliente.razao_social }}</p>
+  <p><strong>CNPJ:</strong> {{ s.cliente.cnpj }}</p>
+  <p><strong>Endereço:</strong> {{ s.cliente.endereco }}</p>
+  {% if s.cliente.email %}<p><strong>E-mail:</strong> {{ s.cliente.email }}</p>{% endif %}
+</div>
+
+<h2>1. LOCAL E DETALHES DO {{ "SERVIÇO" if s.tipo == "continuo" else "EVENTO" }}</h2>
+<ul>
+  {% if s.tipo == "continuo" %}
+    {% if s.dados.descricao_local %}<li><strong>Descrição:</strong> {{ s.dados.descricao_local }}</li>{% endif %}
+    <li><strong>Local do serviço:</strong> {{ s.dados.endereco_servico }}</li>
+    <li><strong>Duração:</strong> {{ s.dados.duracao_meses }} meses — início previsto em {{ s.dados.data_inicio }}, com possibilidade de renovação durante contrato vigente.</li>
+  {% else %}
+    {% if s.dados.nome_evento %}<li><strong>Evento:</strong> {{ s.dados.nome_evento }}</li>{% endif %}
+    <li><strong>Local do evento:</strong> {{ s.dados.endereco_servico }}</li>
+    <li><strong>Data:</strong> {{ s.dados.data_evento }} — das {{ s.dados.hora_inicio }} às {{ s.dados.hora_fim }}</li>
+  {% endif %}
+</ul>
+
+<h2>2. DESCRIÇÃO DOS SERVIÇOS</h2>
+<ul>
+  {% if s.tipo == "continuo" %}
+    <li><strong>Turno de trabalho:</strong> das {{ s.dados.hora_inicio_turno }} às {{ s.dados.hora_fim_turno }}</li>
+  {% endif %}
+  {% if s.dados.trajes %}<li><strong>Trajes:</strong> {{ s.dados.trajes }}</li>{% endif %}
+  {% if s.dados.comunicacao %}<li><strong>Comunicação:</strong> {{ s.dados.comunicacao }}</li>{% endif %}
+  {% if s.dados.observacoes %}<li><strong>Observações:</strong> {{ s.dados.observacoes }}</li>{% endif %}
+</ul>
+
+<h2>3. COMPOSIÇÃO DE CUSTOS</h2>
+<table>
+  <tr><th>Descrição</th><th class="num">Custo unitário (R$)</th><th class="num">Qtd.</th><th class="num">Subtotal (R$)</th></tr>
+  {% for l in s.linhas %}
+  <tr>
+    <td>{{ l.descricao }}</td>
+    <td class="num">{{ l.valor_unitario_fmt }}</td>
+    <td class="num">{{ l.quantidade if l.categoria != "derivada" else "—" }}</td>
+    <td class="num">{{ l.subtotal_fmt }}</td>
+  </tr>
+  {% endfor %}
+  <tr class="total"><td>Total</td><td></td><td></td><td class="num">{{ s.total_fmt }}</td></tr>
+</table>
+<p class="nota">(*) {{ s.nota_metodologica }}</p>
+
+<h2>4. DETALHES DE PAGAMENTO</h2>
+<ul>
+  <li><strong>Formas de pagamento:</strong> {{ s.dados.formas_pagamento }}</li>
+  <li><strong>Chave PIX:</strong> {{ s.empresa.pix }} — <strong>Banco:</strong> {{ s.empresa.banco }}</li>
+  {% if s.tipo == "continuo" %}
+    <li><strong>Vencimento:</strong> {{ s.dados.vencimento }}</li>
+    {% if s.dados.parcela_ingresso %}<li><strong>Parcela de ingresso (50%):</strong> metade do valor mensal devida na assinatura do contrato ou até a data de início da operação; parcela complementar devida até o vencimento acordado. A partir do segundo mês, retorna-se ao fluxo padrão.</li>{% endif %}
+  {% else %}
+    <li><strong>Condição:</strong> pagamento antecipado, em parcela única, até {{ s.dados.data_limite_pagamento }}. Em caso de não recebimento até a data-limite, a {{ s.empresa.nome }} reserva-se o direito de entender desistência por parte do contratante.</li>
+  {% endif %}
+</ul>
+
+<h2>5. CONDIÇÕES GERAIS</h2>
+<ul>
+  {% for c in s.condicoes %}<li>{{ c }}</li>{% endfor %}
+</ul>
+
+<h2>Observações finais</h2>
+<p>{{ s.obs_finais }} Este orçamento tem validade de {{ s.validade_dias }} dias a partir de {{ s.emitida_em }}.</p>

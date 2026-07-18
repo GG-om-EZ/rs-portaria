@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block conteudo %}
+{% include "_passos.html" %}
+<h1>Pagamento</h1>
+<form method="post" action="/propostas/{{ prop.id }}/pagamento" class="cartao">
+  <label>Formas de pagamento</label>
+  {% for f in ["PIX", "Transferência bancária", "Espécie"] %}
+  <label style="font-weight:400">
+    <input type="checkbox" name="formas_pagamento" value="{{ f }}" style="width:auto"
+      {{ 'checked' if f in (dados.formas_pagamento or '') }}> {{ f }}</label>
+  {% endfor %}
+  {% if prop.tipo == "continuo" %}
+    <label>Vencimento acordado <input name="vencimento" value="{{ dados.vencimento or '' }}"
+      placeholder="ex.: todo dia 05" required></label>
+    <label style="font-weight:400"><input type="checkbox" name="parcela_ingresso" style="width:auto"
+      {{ 'checked' if dados.parcela_ingresso == 'sim' }}> Aplicar parcela de ingresso (50% na assinatura)</label>
+  {% else %}
+    <label>Data-limite do pagamento antecipado
+      <input name="data_limite_pagamento" type="date" value="{{ dados.data_limite_pagamento or '' }}" required></label>
+  {% endif %}
+  <button>Salvar e revisar</button>
+</form>
+{% endblock %}

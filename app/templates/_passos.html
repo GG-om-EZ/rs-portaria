@@ -1,0 +1,8 @@
+<div class="passos">
+  {% for e in etapas %}
+    <span class="{{ 'atual' if e == etapa }}">{{ loop.index }}. {{ {
+      'cliente': 'Cliente', 'local': 'Local', 'servicos': 'Serviços',
+      'custos': 'Custos', 'pagamento': 'Pagamento', 'revisao': 'Revisão'
+    }[e] }}</span>
+  {% endfor %}
+</div>

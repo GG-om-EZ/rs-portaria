@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h1>Nova proposta</h1>
+<form method="post" action="/propostas/nova" class="cartao acoes-tipo">
+  <button name="tipo" value="continuo">🏢 Serviço contínuo</button>
+  <button name="tipo" value="evento">🎪 Evento único</button>
+</form>
+
+<h2>Recentes</h2>
+<ul class="lista">
+  {% for p in recentes %}
+  <li>
+    <a href="/propostas/{{ p.id }}/{{ 'emitida' if p.status == 'emitida' else 'cliente' }}">
+      <strong>{{ p.numero or "Rascunho #" ~ p.id }}</strong>
+      {{ p.razao_social or "(sem cliente)" }}
+      <span class="etiqueta {{ p.status }}">{{ p.status }}</span>
+    </a>
+  </li>
+  {% else %}
+  <li class="vazio">Nenhuma proposta ainda.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

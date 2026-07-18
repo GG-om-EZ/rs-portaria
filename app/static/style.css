@@ -1,0 +1,39 @@
+:root { --verde: #6abf4b; --escuro: #37423d; --fundo: #f4f6f3; --erro: #c0392b; }
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; margin: 0; background: var(--fundo); color: #222; }
+main { max-width: 640px; margin: 0 auto; padding: 16px 16px 48px; }
+.topo { display: flex; justify-content: space-between; align-items: center;
+        background: var(--escuro); color: #fff; padding: 10px 16px; }
+.topo a { color: #fff; text-decoration: none; margin-left: 12px; }
+.marca { font-weight: 800; } .marca span { color: var(--verde); }
+h1 { font-size: 1.3rem; } h2 { font-size: 1.05rem; margin-top: 24px; }
+.cartao { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px #0002; }
+label { display: block; margin: 12px 0 4px; font-weight: 600; font-size: .92rem; }
+input, select, textarea { width: 100%; padding: 12px; font-size: 1rem;
+  border: 1px solid #ccc; border-radius: 8px; }
+button { background: var(--verde); color: #fff; border: 0; border-radius: 8px;
+  padding: 12px 18px; font-size: 1rem; font-weight: 700; margin-top: 12px; width: 100%; }
+button.mini { width: auto; padding: 6px 10px; font-size: .8rem; margin: 4px 0 0; background: #888; }
+button.secundario { background: #888; }
+.acoes-tipo { display: grid; gap: 8px; }
+.lista { list-style: none; padding: 0; }
+.lista li { background: #fff; border-radius: 10px; padding: 12px; margin-bottom: 8px; }
+.lista a { text-decoration: none; color: inherit; display: block; }
+.etiqueta { font-size: .72rem; padding: 2px 8px; border-radius: 99px; background: #ddd; }
+.etiqueta.emitida { background: var(--verde); color: #fff; }
+.etiqueta.alerta { background: var(--erro); color: #fff; }
+.erro { color: var(--erro); font-weight: 600; }
+.vazio { color: #777; }
+.busca { display: flex; gap: 8px; } .busca button { width: auto; margin-top: 0; }
+.passos { display: flex; gap: 4px; margin: 8px 0 16px; font-size: .78rem; flex-wrap: wrap; }
+.passos span { padding: 4px 8px; border-radius: 99px; background: #ddd; }
+.passos .atual { background: var(--escuro); color: #fff; }
+table.custos { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; }
+table.custos td, table.custos th { padding: 8px; border-bottom: 1px solid #eee;
+  font-size: .88rem; text-align: left; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+tr.sobrescrita td { background: #fff6e0; }
+.sugerido { font-size: .75rem; color: #777; display: block; }
+.check-ok::before { content: "✓ "; color: var(--verde); font-weight: 900; }
+.check-falha::before { content: "✗ "; color: var(--erro); font-weight: 900; }
+iframe.preview { width: 100%; height: 70vh; border: 1px solid #ccc; border-radius: 8px; background: #fff; }

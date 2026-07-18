@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RS Portaria — Propostas</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topo">
+    <a href="/" class="marca">RS <span>Propostas</span></a>
+    <nav>
+      <a href="/propostas">Propostas</a>
+      <a href="/admin">Configurações</a>
+    </nav>
+  </header>
+  <main>{% block conteudo %}{% endblock %}</main>
+  <script src="/static/htmx.min.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<table class="custos">
+  <tr><th>Descrição</th><th class="num">Unitário</th><th class="num">Qtd.</th><th class="num">Subtotal</th><th></th></tr>
+  {% for l in linhas %}
+  <tr class="{{ 'sobrescrita' if l.sobrescrito }}">
+    <td>{{ l.descricao }}
+      {% if l.sobrescrito %}<span class="sugerido">sugerido: {{ l.valor_sugerido_centavos | brl }}</span>{% endif %}
+    </td>
+    <td class="num">
+      <form method="post" action="/propostas/{{ prop.id }}/linhas/{{ l.id }}/valor"
+            hx-post="/propostas/{{ prop.id }}/linhas/{{ l.id }}/valor" hx-target="#tabela-custos">
+        <input name="valor" value="{{ l.valor_final_centavos | brl }}" inputmode="decimal"
+               style="width:7.5em" aria-label="Valor de {{ l.descricao }}">
+        <button class="mini">OK</button>
+      </form>
+    </td>
+    <td class="num">{{ l.quantidade if l.categoria != 'derivada' else '—' }}</td>
+    <td class="num">{{ (l.valor_final_centavos * l.quantidade) | brl }}</td>
+    <td>
+      {% if l.sobrescrito %}
+      <form method="post" action="/propostas/{{ prop.id }}/linhas/{{ l.id }}/restaurar"
+            hx-post="/propostas/{{ prop.id }}/linhas/{{ l.id }}/restaurar" hx-target="#tabela-custos">
+        <button class="mini" title="Voltar ao valor sugerido">↺</button>
+      </form>
+      {% endif %}
+      {% if l.categoria == 'manual' %}
+      <form method="post" action="/propostas/{{ prop.id }}/linhas/{{ l.id }}/remover"
+            hx-post="/propostas/{{ prop.id }}/linhas/{{ l.id }}/remover" hx-target="#tabela-custos">
+        <button class="mini" title="Remover linha">✕</button>
+      </form>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+  <tr><td colspan="3"><strong>Total</strong></td><td class="num"><strong>{{ total | brl }}</strong></td><td></td></tr>
+</table>
+{% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+<form method="post" action="/propostas/{{ prop.id }}/linhas/nova"
+      hx-post="/propostas/{{ prop.id }}/linhas/nova" hx-target="#tabela-custos">
+  <label>Adicionar linha de custo
+    <input name="descricao" placeholder="Ex.: Operacional, EPIs, material" maxlength="80">
+  </label>
+  <label>Valor (R$)
+    <input name="valor" inputmode="decimal" placeholder="0,00" style="width:7.5em">
+  </label>
+  <button class="mini">Adicionar</button>
+</form>

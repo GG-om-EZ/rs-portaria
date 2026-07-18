@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block conteudo %}
+{% include "_passos.html" %}
+<h1>Local e detalhes</h1>
+<form method="post" action="/propostas/{{ prop.id }}/local" class="cartao">
+  {% if prop.tipo == "continuo" %}
+    <label>Descrição do local (ex.: empresa, condomínio)
+      <input name="descricao_local" value="{{ dados.descricao_local or '' }}"></label>
+    <label>Endereço do serviço
+      <input id="endereco_servico" name="endereco_servico" value="{{ dados.endereco_servico or '' }}" required></label>
+    {% if cliente %}
+    {# aspas simples no atributo: tojson emite aspas duplas reais e escapa apóstrofos #}
+    <button type="button" class="mini"
+      onclick='document.getElementById("endereco_servico").value = {{ cliente.endereco | tojson }}'>
+      Usar endereço do cliente</button>
+    {% endif %}
+    <label>Duração (meses) <input name="duracao_meses" inputmode="numeric" value="{{ dados.duracao_meses or '12' }}" required></label>
+    <label>Data de início prevista <input name="data_inicio" type="date" value="{{ dados.data_inicio or '' }}" required></label>
+  {% else %}
+    <label>Nome/tipo do evento <input name="nome_evento" value="{{ dados.nome_evento or '' }}"></label>
+    <label>Endereço do evento
+      <input id="endereco_servico" name="endereco_servico" value="{{ dados.endereco_servico or '' }}" required></label>
+    {% if cliente %}
+    {# aspas simples no atributo: tojson emite aspas duplas reais e escapa apóstrofos #}
+    <button type="button" class="mini"
+      onclick='document.getElementById("endereco_servico").value = {{ cliente.endereco | tojson }}'>
+      Usar endereço do cliente</button>
+    {% endif %}
+    <label>Data do evento <input name="data_evento" type="date" value="{{ dados.data_evento or '' }}" required></label>
+    <label>Horário de início <input name="hora_inicio" type="time" value="{{ dados.hora_inicio or '' }}" required></label>
+    <label>Horário de término <input name="hora_fim" type="time" value="{{ dados.hora_fim or '' }}" required></label>
+  {% endif %}
+  {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+  <button>Salvar e continuar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block conteudo %}
+{% include "_passos.html" %}
+<h1>Cliente</h1>
+
+<form method="get" action="/propostas/{{ prop.id }}/cliente" class="busca">
+  <input type="search" name="q" value="{{ q }}" placeholder="Buscar cliente cadastrado">
+  <button>Buscar</button>
+</form>
+<ul class="lista">
+  {% for c in clientes %}
+  <li>
+    <form method="post" action="/propostas/{{ prop.id }}/cliente">
+      <input type="hidden" name="cliente_id" value="{{ c.id }}">
+      <strong>{{ c.razao_social }}</strong> — {{ c.cnpj }}
+      <button class="mini">Usar este cliente</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
+
+<h2>Ou cadastrar novo</h2>
+<form method="post" action="/propostas/{{ prop.id }}/cliente/novo" class="cartao">
+  <label>Razão social <input name="razao_social" required></label>
+  <label>CNPJ <input name="cnpj" inputmode="numeric" placeholder="00.000.000/0000-00" required></label>
+  <label>Endereço completo <input name="endereco" required></label>
+  <label>E-mail <input name="email" type="email"></label>
+  <label>Telefone/WhatsApp <input name="telefone"></label>
+  {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+  <button>Salvar e continuar</button>
+</form>
+{% endblock %}

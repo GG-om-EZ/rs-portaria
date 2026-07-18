@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h1>Proposta {{ prop.numero }} emitida ✓</h1>
+<div class="cartao">
+  <a href="/propostas/{{ prop.id }}/pdf"><button>Baixar PDF</button></a>
+  {% if prop.pdf_arquivado %}
+    <p>Cópia arquivada automaticamente em <em>Propostas Enviadas</em>.</p>
+  {% else %}
+    <p class="erro">A cópia de arquivo não pôde ser gravada. O download acima funciona normalmente;
+      use "Regravar cópias" na lista de propostas quando a pasta estiver acessível.</p>
+  {% endif %}
+  <form method="post" action="/propostas/{{ prop.id }}/duplicar">
+    <button class="secundario">Duplicar (nova versão editável)</button>
+  </form>
+</div>
+{% endblock %}

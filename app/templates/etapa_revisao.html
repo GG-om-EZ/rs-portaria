@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block conteudo %}
+{% include "_passos.html" %}
+<h1>Revisão final</h1>
+<ul class="lista">
+  {% for i in itens %}
+  <li class="{{ 'check-ok' if i.ok else 'check-falha' }}">
+    {{ i.rotulo }}{% if not i.critico %} <small>(opcional)</small>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+<p><strong>Total da proposta: R$ {{ total | brl }}</strong></p>
+{% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+<iframe class="preview" src="/propostas/{{ prop.id }}/preview" title="Prévia do documento"></iframe>
+{% if pode %}
+<form method="post" action="/propostas/{{ prop.id }}/emitir"><button>Emitir PDF</button></form>
+{% else %}
+<p class="erro">Resolva os itens críticos (✗) para poder emitir.</p>
+{% endif %}
+{% endblock %}

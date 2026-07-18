@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h1>Propostas</h1>
+<form method="get" action="/propostas" class="busca">
+  <input type="search" name="q" value="{{ q }}" placeholder="Buscar por cliente ou número">
+  <button>Buscar</button>
+</form>
+<ul class="lista">
+  {% for p in propostas %}
+  <li>
+    <a href="/propostas/{{ p.id }}/{{ 'emitida' if p.status == 'emitida' else 'cliente' }}">
+      <strong>{{ p.numero or "Rascunho #" ~ p.id }}</strong>
+      {{ p.razao_social or "(sem cliente)" }} — {{ p.tipo }}
+      <span class="etiqueta {{ p.status }}">{{ p.status }}</span>
+      {% if p.status == 'emitida' and not p.pdf_arquivado %}<span class="etiqueta alerta">cópia não arquivada</span>{% endif %}
+    </a>
+    <form method="post" action="/propostas/{{ p.id }}/duplicar"><button class="mini">Duplicar</button></form>
+  </li>
+  {% else %}
+  <li class="vazio">Nada encontrado.</li>
+  {% endfor %}
+</ul>
+<form method="post" action="/rearquivar"><button class="secundario">Regravar cópias não arquivadas</button></form>
+{% endblock %}

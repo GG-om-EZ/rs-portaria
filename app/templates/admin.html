@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h1>Configurações</h1>
+{% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+<p>Alterações criam uma <strong>nova vigência</strong> — propostas antigas não mudam.</p>
+
+{% for p in parametros %}
+<form method="post" action="/admin/parametros" class="cartao" style="margin-bottom:8px">
+  <input type="hidden" name="chave" value="{{ p.chave }}">
+  <label>{{ p.rotulo }}
+    {% if p.longo %}<textarea name="valor" rows="4">{{ p.valor }}</textarea>
+    {% else %}<input name="valor" value="{{ p.valor }}">{% endif %}
+  </label>
+  <label>Vigente a partir de <input type="date" name="vigencia_inicio" value="{{ hoje }}"></label>
+  <button class="mini">Salvar novo valor</button>
+</form>
+{% endfor %}
+
+<h2>Funções do catálogo</h2>
+{% for f in funcoes %}
+<form method="post" action="/admin/funcoes/{{ f.id }}" class="cartao" style="margin-bottom:8px">
+  <strong>{{ f.nome }}</strong> ({{ f.tipo }}{{ ", com adicional noturno" if f.aplica_noturno }})
+  <label>Valor-base (R$) <input name="valor_base" value="{{ f.valor_base_centavos | brl }}"></label>
+  <label style="font-weight:400"><input type="checkbox" name="ativa" style="width:auto"
+    {{ 'checked' if f.ativa }}> Ativa</label>
+  <button class="mini">Atualizar</button>
+</form>
+{% endfor %}
+
+<h2>Nova função</h2>
+<form method="post" action="/admin/funcoes" class="cartao">
+  <label>Nome <input name="nome" required placeholder="ex.: Recepcionista de evento (6h)"></label>
+  <label>Tipo <select name="tipo"><option value="continuo">Serviço contínuo</option>
+    <option value="evento">Evento</option></select></label>
+  <label>Valor-base (R$) <input name="valor_base" inputmode="decimal" required></label>
+  <label style="font-weight:400"><input type="checkbox" name="aplica_noturno" style="width:auto">
+    Aplica adicional noturno</label>
+  <button>Criar função</button>
+</form>
+{% endblock %}
