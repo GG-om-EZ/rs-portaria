@@ -48,6 +48,29 @@ qualquer momento pelo botão "Regravar cópias não arquivadas".
 O serviço é o mesmo em qualquer host: copie o repositório + `./data` +
 `.env` (ajustando `RSP_ARQUIVO_HOST`) e rode `docker compose up -d`.
 
+## Roadmap
+
+O projeto evolui em etapas, priorizando segurança e confiabilidade antes de
+novas funcionalidades.
+
+### Já entregue ✅
+- Geração de propostas comerciais com cálculo de encargos e margem
+- Autenticação por PIN e sessão
+- Dados sensíveis isolados fora do repositório, em banco privado
+- Exportação em PDF
+
+### Curto prazo 🔨
+- Reforço da postura de segurança da aplicação e do banco de dados
+- Colocar a ferramenta em uso real no dia a dia (acesso remoto seguro)
+- Refinamento visual das propostas em PDF
+
+### Médio prazo 📋
+- Hospedagem sempre disponível (fora do notebook)
+- Melhorias de usabilidade no fluxo mobile
+
+### Futuro 💡
+- Ideias em aberto conforme o uso amadurecer
+
 ## Licença
 
 Distribuído sob a **GNU Affero General Public License v3.0** (AGPL-3.0) — ver
