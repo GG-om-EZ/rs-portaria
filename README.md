@@ -47,3 +47,15 @@ qualquer momento pelo botão "Regravar cópias não arquivadas".
 
 O serviço é o mesmo em qualquer host: copie o repositório + `./data` +
 `.env` (ajustando `RSP_ARQUIVO_HOST`) e rode `docker compose up -d`.
+
+## Licença
+
+Distribuído sob a **GNU Affero General Public License v3.0** (AGPL-3.0) — ver
+[`LICENSE`](LICENSE).
+
+Copyright (C) 2026 RS Portaria e Serviços.
+
+Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo sob os
+termos da AGPL-3.0 publicada pela Free Software Foundation. Por ser uma aplicação
+de rede, quem executar uma versão modificada acessível por rede deve
+disponibilizar o código-fonte correspondente aos usuários dessa versão (AGPL §13).
